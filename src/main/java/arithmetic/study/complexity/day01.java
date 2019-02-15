@@ -55,6 +55,40 @@ public class day01 {
 
 
     /***
-     * 
+     * 复杂度分析实用方法三则
+     * 大O这种复杂度表示方法只是表示一种变化趋势
+     * 我们通常会忽略掉公式中的常数、低阶、系数，只需要记录一个最大阶的量级就可以了
      */
+    /***
+     * 复杂度分析方法一：只关注循环执行次数最多的一段代码
+     * 即下面代码只需要关注j循环即可，复杂度为O(n)
+     * @param n
+     * @return
+     */
+    public int method3(int n){
+
+        int sum = 0;
+        int i = 0;
+        int j = 0;
+
+        for(; i<100; i++){
+            sum = sum + i;
+        }
+
+        for(; j<n; j++){
+            sum = sum + j;
+        }
+
+        return sum;
+    }
+
+
+    /***
+     * 复杂度分析方法二：总复杂度等于量级最大的那段代码的复杂度
+     * @param n
+     * @return
+     */
+    public int method4(int n){
+        return 0;
+    }
 }
