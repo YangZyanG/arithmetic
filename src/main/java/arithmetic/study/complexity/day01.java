@@ -85,10 +85,56 @@ public class day01 {
 
     /***
      * 复杂度分析方法二：总复杂度等于量级最大的那段代码的复杂度
+     * 下面代码只需关注量级最大的那段代码，第一个循环复杂度是O(n)，第二段代码复杂度是O(n²)
+     * 所以这段代码复杂度就等于量级最大的那段代码复杂度，即O(n²)
      * @param n
      * @return
      */
     public int method4(int n){
-        return 0;
+
+        int sum = 0;
+        int i = 0;
+        int j = 0;
+
+        for(; i<n; i++){
+            sum = sum + i;
+        }
+
+        for(; i<n; i++){
+            for(; j<n; j++){
+                sum = sum + j;
+            }
+        }
+
+        return sum;
+    }
+
+
+    /***
+     * 嵌套代码的复杂度等于嵌套内外代码复杂度的乘积
+     * 下面代码中method5代码的复杂度是O(n)
+     * method5循环中又调用了method5_1，而method5_1的复杂度是O(n)
+     * 所以method5整段代码的复杂度是O(n²)
+     * @param n
+     * @return
+     */
+    public int method5(int n){
+
+        int ret = 0;
+        int i = 0;
+        for(; i<n; i++){
+            ret = method5_1(n) + ret;
+        }
+        return ret;
+    }
+
+    public int method5_1(int m){
+
+        int sum = 0;
+        int i = 0;
+        for(; i<m; i++){
+            sum = i + sum;
+        }
+        return sum;
     }
 }
