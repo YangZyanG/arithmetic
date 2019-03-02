@@ -99,4 +99,31 @@ public class day02 {
 
         return i;
     }
+
+    /***
+     * O(m+n)、O(m*n)
+     * 这种代码的时间复杂度不能用前面的方法进行分析，因为你不能判断m和n谁的量级大
+     * 这种时候只需要将不确定数据规模的时间复杂度相加或相乘就行
+     * @param n
+     * @param m
+     * @return
+     */
+    public int method5(int n, int m){
+
+        int i = 0;
+        int sum_n = 0;
+
+        for(; i<n; i++){
+            sum_n = sum_n + i;
+        }
+
+        int j = 0;
+        int sum_m = 0;
+
+        for(; j<m; j++){
+            sum_m = sum_m + j;
+        }
+
+        return sum_n + sum_m;
+    }
 }
