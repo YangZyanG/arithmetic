@@ -126,4 +126,41 @@ public class day04 {
         array[count] = val;
         ++count;
     }
+
+    /***
+     * 均摊时间复杂度和平均时间复杂度的区别
+     * 以上面两种方法作为参考，大致有两点不同的地方
+     * 1.method1只有在极端情况下复杂度才为O(1)，而method2大部分情况下复杂度都是O(1)，极端情况下才为O(n)
+     * 2.对于method2来讲，O(1)时间复杂度的出现和O(n)时间复杂度的出现时非常有规律的，一般在O(n)出现后，会有n-1个O(1)
+     * 所以针对这种特殊的场景，我们就用均摊时间复杂度分析法来分析
+     */
+
+
+    int[] arrays = new int[10];
+    int len = 10;
+    int i = 0;
+
+    /***
+     * 课后练习
+     * 当i<len时，直接执行，所以最好情况时间复杂度是O(1)
+     * 当i>len时，假如len为n，那么for循环一共会执行n次，所以最坏时间复杂度是O(n)
+     * 分析代码可知，一次O(n)出现后，len为2n，后面就会出现2n-1次O(1)，当i=2n时，又会执行循环
+     * 所以直接用均摊时间分析法，每种情况出现的概率1/n，所以复杂度为1 * 1/n + 1 * 1/n +...+ n * 1/n -> O(n)
+     * @param element
+     */
+    void add(int element){
+        if(i >= len){
+            int new_array[] = new int[len*2];
+
+            for(int j=0; j<len; ++j){
+                new_array[j] = arrays[j];
+            }
+
+            arrays = new_array;
+            len = len * 2;
+        }
+
+        array[i] = element;
+        ++i;
+    }
 }
