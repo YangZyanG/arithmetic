@@ -119,15 +119,11 @@ public class day01 {
         ClassLoader classLoader = day01.class.getClassLoader();
         System.out.println(classLoader);
         //使用ClassLoader.loadClass()来加载类，不会执行静态块
-        classLoader.loadClass("arithmetic.study.jvm.day01");
+        classLoader.loadClass("arithmetic.study.jvm.day01Demo");
         //使用Class.forName()来加载类，默认会执行静态块
-        Class.forName("arithmetic.study.jvm.day01");
-        //Class.forName(name, initialize, loader)带参函数也可控制是否加载static块。
-        Class.forName("arithmetic.study.jvm.day01", false, this.getClass().getClassLoader());
-    }
-
-    static {
-        System.out.println("静态块初始化了！");
+        Class.forName("arithmetic.study.jvm.day01Demo");
+        //Class.forName(name, initialize, loader)带参函数也可控制是否加载static块。true为加载，false为不加载
+        Class.forName("arithmetic.study.jvm.day01Demo", false, classLoader);
     }
 
     /***
