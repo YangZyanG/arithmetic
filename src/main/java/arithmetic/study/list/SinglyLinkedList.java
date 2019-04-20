@@ -22,9 +22,37 @@ public class SinglyLinkedList {
 
         Node temp = head;
         while (null != temp.next){
-            temp = head.next;
+            temp = temp.next;
         }
         temp.next = node;
+    }
+
+    /***
+     * 添加到指定位置
+     * @param data
+     * @param index
+     */
+    public void addNode(int data, int index){
+
+        if(index<0 || index>length()){
+            throw new RuntimeException();
+        }
+
+        Node node = new Node(data);
+
+        int i = 0;
+        Node temp = head;
+
+        while (true){
+            if(i++ == (index-1)){
+                node.next = temp.next;
+                temp.next = node;
+                break;
+            }else {
+                temp = temp.next;
+            }
+        }
+
     }
 
     /***
@@ -70,5 +98,18 @@ public class SinglyLinkedList {
         }
 
         return length;
+    }
+
+    /***
+     * 打印
+     */
+    public void print(){
+
+        Node node = head;
+
+        while (null != node){
+            System.out.println(node.data);
+            node = node.next;
+        }
     }
 }

@@ -7,7 +7,7 @@ package arithmetic.study.list;
 public class Node {
 
     //结点存放的数据
-    private int data;
+    public int data;
 
     //结点的next，默认为null
     public Node next;

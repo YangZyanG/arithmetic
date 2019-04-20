@@ -45,7 +45,13 @@ public class day01 {
      */
     @Test
     public void method1(){
-
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(4);
+        linkedList.print();
+        linkedList.addNode(3, 2);
+        linkedList.print();
     }
 
 }
