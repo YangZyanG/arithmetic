@@ -52,6 +52,8 @@ public class day01 {
         linkedList.print();
         linkedList.addNode(3, 2);
         linkedList.print();
+        linkedList.deleteNode(1);
+        linkedList.print();
     }
 
 }
