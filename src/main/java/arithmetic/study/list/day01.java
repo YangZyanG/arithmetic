@@ -70,4 +70,24 @@ public class day01 {
         cycleLinkedList.Jusephus(0, 3);
         cycleLinkedList.print();
     }
+
+    /***
+     * 双向链表
+     * 单链表只有一个方向，结点只有一个后继指针next指向后面的结点。
+     * 而双向链表，顾名思义，它支持两个方向，每个结点不止有一个后继指针next指向后面的结点，还有一个前驱指针prev指向前面的结点。
+     * 双向链表需要额外的两个空间来存储前驱指针prev和后继指针next，所以，如果同样多的数据，双向链表比单链表占用更多的空间。
+     * 从结构上看，双向链表可以支持O(1)时间复杂度的情况下找到前驱结点，正是这样的特点，也是双向链表在某些情况下的插入、删除等操作都要比单链表简单、高效。
+     *
+     */
+    @Test
+    public void method3(){
+        List<String> list = new LinkedList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("5");
+        list.add(1, "1");
+        list.remove(2);
+    }
 }
