@@ -52,8 +52,22 @@ public class day01 {
         linkedList.print();
         linkedList.addNode(3, 2);
         linkedList.print();
-        linkedList.deleteNode(1);
+        linkedList.deleteNode(0);
         linkedList.print();
     }
 
+    /***
+     * 循环链表
+     * 循环链表是一种特殊的单链表，实际上，循环链表也很简单，它跟单链表唯一的区别就在结尾点。
+     * 我们知道，单链表的尾结点指向空指针地址，表示就这就是最后的结点了。而循环链表的尾结点指针指向链表的头结点。
+     * 循环链表的优点是从尾结点到头结点比较方便，当处理的数据具有环形结构特点时，就特别适合采用循环链表，比如约瑟夫问题。
+     */
+    @Test
+    public void method2(){
+        CycleLinkedList cycleLinkedList = new CycleLinkedList();
+        cycleLinkedList.init(10000);
+        cycleLinkedList.print();
+        cycleLinkedList.Jusephus(0, 3);
+        cycleLinkedList.print();
+    }
 }
