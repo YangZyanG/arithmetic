@@ -81,13 +81,23 @@ public class day01 {
      */
     @Test
     public void method3(){
-        List<String> list = new LinkedList<String>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add(1, "1");
-        list.remove(2);
+        MyLinkedList<String> linkedList = new MyLinkedList<String>();
+        linkedList.add("1");
+        linkedList.add("2");
+        linkedList.add("3");
+        linkedList.addFirst("0");
+        linkedList.add("4");
+
+        linkedList.remove(3);
+        linkedList.print();
     }
+
+    /***
+     * 基于链表实现LRU缓存淘汰算法
+     * 思路：
+     * 我们维护一个有序的单链表，越靠近链表尾部的结点是越早访问的。当有一个新的数据被访问时，我们从链表头开始顺序遍历链表。
+     * 如果数据之前已经存在于链表中，我们遍历得到这个数据的结点，并将原来的位置删除，然后再插入链表头部。
+     * 如果数据不在链表中，又分为两种情况。
+     * 如果缓存链表未满，直接插入头部。如果缓存链表满了，删除最后一个结点的数据，再将新数据插入头部。
+     */
 }

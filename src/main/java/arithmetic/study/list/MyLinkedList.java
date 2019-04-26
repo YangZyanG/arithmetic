@@ -43,6 +43,30 @@ public class MyLinkedList<E> {
         size++;
     }
 
+    private E unlink(Node<E> e){
+        E data = e.data;
+        Node<E> prev = e.prev;
+        Node<E> next = e.next;
+
+        if(null == prev){
+            first = next;
+        }else{
+            prev.next = next;
+            e.prev = null;
+        }
+
+        if(null == next){
+            last = prev;
+        }else{
+            next.prev = prev;
+            e.next = null;
+        }
+
+        e.data = null;
+        size--;
+        return data;
+    }
+
     public void add(E e){
         linkLast(e);
     }
@@ -62,6 +86,11 @@ public class MyLinkedList<E> {
 
     public void addLast(E e){
         linkLast(e);
+    }
+
+    public E remove(int index){
+        checkIndex(index);
+        return unlink(node(index));
     }
 
     /***
@@ -106,6 +135,17 @@ public class MyLinkedList<E> {
             this.data = data;
             this.prev = prev;
             this.next = next;
+        }
+    }
+
+    public void print(){
+        Node<E> node = first;
+        if(null != node){
+            while (node != last){
+                System.out.println(node.data);
+                node = node.next;
+            }
+            System.out.println(node.data);
         }
     }
 }
