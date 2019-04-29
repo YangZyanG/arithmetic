@@ -194,7 +194,8 @@ public class day02 {
     }
 
     /***
-     * 删除链表倒数第n个结点
+     * 删除链表倒数第n个结点，只遍历一次链表
+     * 使用两个指针，一个指针先遍历index个位置，然后两个指针一起遍历
      */
     @Test
     public void method4(){
@@ -205,10 +206,25 @@ public class day02 {
         linkedList.print();
 
         System.out.println();
-        int result = linkedList.backDelete(3);
+        linkedList.deleteN(linkedList, 3);
         linkedList.print();
+    }
 
+    /***
+     * 求链表中间结点，只遍历一次
+     * 使用快慢两个指针
+     */
+    @Test
+    public void method5(){
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        for (int i=0; i<99; ++i){
+            linkedList.addNode(i);
+        }
+        linkedList.print();
         System.out.println();
+
+        int result = linkedList.getMiddle(linkedList);
         System.out.println(result);
     }
+
 }

@@ -227,16 +227,44 @@ public class SinglyLinkedList {
         return head;
     }
 
-    public int backDelete(int index){
-        int n = length() - index;
-        Node prev = head;
+    public SinglyLinkedList deleteN(SinglyLinkedList linkedList, int index){
+        linkedList.head = deleteN(linkedList.head, index);
+        return linkedList;
+    }
 
-        for (int i=0; i<n-1; ++i){
+    public Node deleteN(Node head, int index){
+
+        Node prev = head;
+        Node curr = head;
+
+        for (int i=0; i<index; ++i){
+            curr = curr.next;
+        }
+
+        if(null == curr)
+            return head.next;
+
+        while (null != curr.next){
+            curr = curr.next;
             prev = prev.next;
         }
-        int result = prev.next.data;
-        prev.next = prev.next.next;
 
-        return result;
+        prev.next = prev.next.next;
+        return head;
+    }
+
+    public int getMiddle(SinglyLinkedList linkedList){
+        Node fast = linkedList.head;
+        Node slow = linkedList.head;
+
+        while (null != fast.next){
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if (null == fast)
+                break;
+        }
+
+        return slow.data;
     }
 }
