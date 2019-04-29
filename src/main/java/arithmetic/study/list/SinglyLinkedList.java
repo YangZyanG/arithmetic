@@ -226,4 +226,17 @@ public class SinglyLinkedList {
 
         return head;
     }
+
+    public int backDelete(int index){
+        int n = length() - index;
+        Node prev = head;
+
+        for (int i=0; i<n-1; ++i){
+            prev = prev.next;
+        }
+        int result = prev.next.data;
+        prev.next = prev.next.next;
+
+        return result;
+    }
 }

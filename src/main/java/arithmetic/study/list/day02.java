@@ -192,4 +192,23 @@ public class day02 {
         result = result.merge1(linkedList1, linkedList2);
         result.print();
     }
+
+    /***
+     * 删除链表倒数第n个结点
+     */
+    @Test
+    public void method4(){
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        for (int i=0; i<10; ++i){
+            linkedList.addNode(i);
+        }
+        linkedList.print();
+
+        System.out.println();
+        int result = linkedList.backDelete(3);
+        linkedList.print();
+
+        System.out.println();
+        System.out.println(result);
+    }
 }
