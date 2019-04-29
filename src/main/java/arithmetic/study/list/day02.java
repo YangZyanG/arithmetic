@@ -143,4 +143,53 @@ public class day02 {
         System.out.println();
         linkedList.print();
     }
+
+    /***
+     * 链表中是否有环的检测
+     * 用快慢两个指针遍历链表，如果某时刻结点值相等，则证明有环。
+     */
+    @Test
+    public void method2(){
+        //单链表中环的检测
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        for(int i=1; i<=100; ++i){
+            linkedList.addNode(i);
+        }
+        System.out.println(linkedList.cycleCheck());
+
+        //循环链表中环的检测
+        CycleLinkedList cycleLinkedList = new CycleLinkedList();
+        cycleLinkedList.init(100);
+        System.out.println(cycleLinkedList.cycleCheck());
+    }
+
+    /***
+     * 两个有序链表合并
+     */
+    @Test
+    public void method3(){
+
+        SinglyLinkedList linkedList1 = new SinglyLinkedList();
+        for (int i=1; i<10; ++i){
+            linkedList1.addNode(i);
+        }
+
+        SinglyLinkedList linkedList2 = new SinglyLinkedList();
+        for (int i=2; i<=10; i=i+2){
+            linkedList2.addNode(i);
+        }
+
+        linkedList1.print();
+        linkedList2.print();
+
+        System.out.println();
+        SinglyLinkedList result = new SinglyLinkedList();
+
+//        //遍历
+//        result = result.merge(linkedList1, linkedList2);
+
+        //递归
+        result = result.merge1(linkedList1, linkedList2);
+        result.print();
+    }
 }

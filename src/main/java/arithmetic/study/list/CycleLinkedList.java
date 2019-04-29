@@ -68,4 +68,18 @@ public class CycleLinkedList {
 
         head = temp;
     }
+
+    public boolean cycleCheck(){
+        Node handFast = head;
+        Node handSlow = head;
+
+        while (null!=handFast.next.next && null!=handSlow.next){
+            handFast = handFast.next.next;
+            handSlow = handSlow.next;
+            if(handFast.data == handSlow.data)
+                return true;
+        }
+
+        return false;
+    }
 }

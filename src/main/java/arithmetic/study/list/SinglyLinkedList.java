@@ -147,4 +147,83 @@ public class SinglyLinkedList {
 
         return prev;
     }
+
+    public boolean cycleCheck(){
+        Node handFast = head;
+        Node handSlow = head;
+
+        while (null!=handFast.next.next && null!=handSlow.next){
+            handFast = handFast.next.next;
+            handSlow = handSlow.next;
+            if(handFast.data == handSlow.data)
+                return true;
+        }
+
+        return false;
+    }
+
+    public SinglyLinkedList merge(SinglyLinkedList linkedList1, SinglyLinkedList linkedList2){
+        Node head1 = linkedList1.head;
+        Node head2 = linkedList2.head;
+        SinglyLinkedList result = new SinglyLinkedList();
+
+        while (head1!=null && head2!=null){
+            if (head1.data < head2.data){
+                result.addNode(head1.data);
+                head1 = head1.next;
+            }else if(head1.data > head2.data){
+                result.addNode(head2.data);
+                head2 = head2.next;
+            }else{
+                result.addNode(head1.data);
+                head1 = head1.next;
+                head2 = head2.next;
+            }
+        }
+
+        if(head1 != null){
+            while (head1 != null){
+                result.addNode(head1.data);
+                head1 = head1.next;
+            }
+        }
+        if(head2 != null){
+            while (head2 != null){
+                result.addNode(head2.data);
+                head2 = head2.next;
+            }
+        }
+
+        return result;
+    }
+
+    public SinglyLinkedList merge1(SinglyLinkedList linkedList1, SinglyLinkedList linkedList2){
+        SinglyLinkedList result = new SinglyLinkedList();
+        result.head = merge1(linkedList1.head, linkedList2.head);
+        return result;
+    }
+
+    public Node merge1(Node head1, Node head2){
+
+        if(head1==null && head2==null)
+            return null;
+        if(head1 == null)
+            return head2;
+        if(head2 == null)
+            return head1;
+
+        Node head = null;
+        if(head1.data > head2.data){
+            head = head2;
+            head.next = merge1(head1, head2.next);
+        }else if(head1.data < head2.data){
+            head = head1;
+            head.next = merge1(head1.next, head2);
+        }else{
+            head = head1;
+            head.next = merge1(head1.next, head2.next);
+        }
+
+        return head;
+    }
 }
