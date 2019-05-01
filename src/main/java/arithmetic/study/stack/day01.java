@@ -166,4 +166,14 @@ public class day01 {
         CompareString compareString = new CompareString();
         System.out.println(compareString.backspaceCompare("a##c", "#a#c"));
     }
+
+    /***
+     * LeetCode 244
+     * 基本计算器
+     */
+    @Test
+    public void method7(){
+        Calculate calculate = new Calculate();
+        System.out.println(calculate.calculate("2147483647"));
+    }
 }
