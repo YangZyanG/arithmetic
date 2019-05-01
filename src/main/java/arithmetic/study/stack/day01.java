@@ -168,12 +168,23 @@ public class day01 {
     }
 
     /***
-     * LeetCode 244
+     * LeetCode 224
      * 基本计算器
      */
     @Test
     public void method7(){
         Calculate calculate = new Calculate();
         System.out.println(calculate.calculate("2147483647"));
+    }
+
+    /***
+     * LeetCode 682
+     * 棒球比赛
+     */
+    @Test
+    public void method8(){
+        CalPoints calPoints = new CalPoints();
+        String[] ops = {"5","2","C","D","+"};
+        System.out.println(calPoints.calPoints(ops));
     }
 }
