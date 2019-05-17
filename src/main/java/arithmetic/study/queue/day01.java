@@ -72,4 +72,9 @@ public class day01 {
      * 你应该已经发现了，上述定义是一个典型的"生产者-消费者"模式。
      * 具体的实现效果在controller包的BlockingArrayQueueController里面
      */
+
+    /***
+     * 并发队列
+     */
+
 }
