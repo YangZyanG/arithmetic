@@ -194,4 +194,32 @@ public class day01 {
     /***
      * 希尔排序
      */
+    @Test
+    public void method4(){
+        int[] arrays = {3, 4, 12, 3, 7, 1, 9, 6};
+        System.out.println(Arrays.toString(arrays));
+        arrays = shellSort(arrays);
+        System.out.println(Arrays.toString(arrays));
+    }
+
+    public int[] shellSort(int[] arrays){
+
+        for (int gap=arrays.length/2; gap>0; gap/=2){
+
+            for (int i = gap; i < arrays.length; i++) {
+
+                int j = i;
+                int temp = arrays[j];
+
+                // j - step 就是代表与它同组隔壁的元素
+                while (j - gap >= 0 && arrays[j - gap] > temp) {
+                    arrays[j] = arrays[j - gap];
+                    j = j - gap;
+                }
+                arrays[j] = temp;
+            }
+        }
+
+        return arrays;
+    }
 }
