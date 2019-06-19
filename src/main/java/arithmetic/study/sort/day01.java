@@ -71,7 +71,7 @@ public class day01 {
             //一共要进行length次冒泡，每次冒泡必定有数据交换，如果没有则说明已经有序，可以提前结束排序
             boolean isSort = false;
             System.out.println(i);
-            for (int j=0; j<arrays.length - i -1; ++j){
+            for (int j=0; j<arrays.length - i - 1; ++j){
 
                 if(arrays[j] > arrays[j+1]){
                     int temp = arrays[j];
