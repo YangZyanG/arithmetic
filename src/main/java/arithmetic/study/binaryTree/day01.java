@@ -12,16 +12,16 @@ public class day01 {
      */
     @Test
     public void method1(){
-        ListTree tree = new ListTree();
-        ListTree.Node root = tree.addRoot(0);
+        BinaryTree tree = new BinaryTree();
+        Node root = tree.addRoot(0);
 
-        ListTree.Node left = tree.addNode(root, ListTree.NodeType.LEFT, 1);
-        ListTree.Node right = tree.addNode(root, ListTree.NodeType.RIGHT, 2);
+        Node left = tree.addNode(root, NodeType.LEFT, 1);
+        Node right = tree.addNode(root, NodeType.RIGHT, 2);
 
-        tree.addNode(left, ListTree.NodeType.LEFT, 3);
-        tree.addNode(left, ListTree.NodeType.RIGHT, 4);
-        tree.addNode(right, ListTree.NodeType.LEFT, 5);
-        tree.addNode(right, ListTree.NodeType.RIGHT, 6);
+        tree.addNode(left, NodeType.LEFT, 3);
+        tree.addNode(left, NodeType.RIGHT, 4);
+        tree.addNode(right, NodeType.LEFT, 5);
+        tree.addNode(right, NodeType.RIGHT, 6);
 
 //        tree.preOrder(root);
 //        tree.inOrder(root);
