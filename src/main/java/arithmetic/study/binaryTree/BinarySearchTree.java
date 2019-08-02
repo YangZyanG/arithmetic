@@ -7,14 +7,14 @@ public class BinarySearchTree {
 
     private Node root;
 
-    public Node find(Node node){
+    public Node find(int data){
 
         Node temp = root;
         while (temp != null){
 
-            if (temp.getData() > node.getData())
+            if (temp.getData() > data)
                 temp = temp.getLeft();
-            else if (temp.getData() < node.getData())
+            else if (temp.getData() < data)
                 temp = temp.getRight();
             else
                 return temp;
@@ -55,6 +55,35 @@ public class BinarySearchTree {
                 temp = temp.getRight();
             }
 
+        }
+    }
+
+    public void delete(int data){
+
+        Node temp = root;
+        Node parentTemp;
+
+        while (temp!=null && temp.getData()!=data){
+            parentTemp = temp;
+            if (temp.getData() > data)
+                temp = temp.getLeft();
+            else
+                temp = temp.getRight();
+        }
+
+        if (temp == null)
+            return;
+
+        if (temp.getLeft()!=null && temp.getRight()!=null){
+            Node min = temp.getRight();
+            Node parentMin = temp;
+
+            while (min.getLeft() != null){
+                parentMin = min;
+                min = min.getLeft();
+            }
+            temp = min;
+            parentTemp = parentMin;
         }
     }
 
