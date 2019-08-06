@@ -5,5 +5,4 @@ package arithmetic.study.binaryTree;
  */
 public class RedBlackTree {
 
-
 }
