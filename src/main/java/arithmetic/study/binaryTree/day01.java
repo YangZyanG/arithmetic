@@ -43,9 +43,10 @@ public class day01 {
         tree.insert(12);
         tree.insert(7);
         System.out.println(Arrays.toString(tree.getHeap()));
-
-        tree.delete();
+        tree.sort();
         System.out.println(Arrays.toString(tree.getHeap()));
+//        tree.delete();
+//        System.out.println(Arrays.toString(tree.getHeap()));
     }
 
     @Test
