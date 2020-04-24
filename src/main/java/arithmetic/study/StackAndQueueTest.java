@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author yangziyang
  * @since 2020-03-20
  */
-public class BaseTest {
+public class StackAndQueueTest {
 
     /***
      * 栈
@@ -335,6 +335,4 @@ public class BaseTest {
         queue.push(15);
         System.out.println(JSONConvert.toString(queue.getArrays()));
     }
-
-    
 }
