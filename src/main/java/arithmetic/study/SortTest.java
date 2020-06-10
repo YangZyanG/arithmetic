@@ -3,7 +3,9 @@ package arithmetic.study;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author yangziyang
@@ -100,5 +102,10 @@ public class SortTest {
         System.out.println(Arrays.toString(arrays));
         arrays = selectionSort(arrays);
         System.out.println(Arrays.toString(arrays));
+    }
+
+    public int[] mergeSort(){
+        List list = new ArrayList();
+        return null;
     }
 }

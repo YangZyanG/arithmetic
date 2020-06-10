@@ -19,12 +19,12 @@ public class day02 {
     /***
      * 查找第一个值等于给定值的元素
      */
-    public int method1(int[] arrays, int n, int value){
+    public int method1(int[] arrays, int n, int value) {
         int low = 0;
         int high = n - 1;
         int mid;
 
-        while (low <= high){
+        while (low <= high) {
             mid = low + ((high - low) >> 1);
 
             if (value > arrays[mid])
@@ -32,7 +32,7 @@ public class day02 {
             else if (value < arrays[mid])
                 high = mid - 1;
             else {
-                if (mid==0 || value!=arrays[mid-1])
+                if (mid == 0 || value != arrays[mid - 1])
                     return mid;
                 else
                     high = mid - 1;
@@ -43,7 +43,7 @@ public class day02 {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         int[] arrays = {1, 2, 4, 6, 9, 12, 23, 23, 25, 30};
         System.out.println(method1(arrays, 10, 23));
     }
@@ -51,12 +51,12 @@ public class day02 {
     /***
      * 查找最后一个值等于给定值的元素
      */
-    public int method2(int[] arrays, int n, int value){
+    public int method2(int[] arrays, int n, int value) {
         int low = 0;
         int high = n - 1;
         int mid;
 
-        while (low <= high){
+        while (low <= high) {
             mid = low + ((high - low) >> 1);
 
             if (value > arrays[mid])
@@ -64,7 +64,7 @@ public class day02 {
             else if (value < arrays[mid])
                 high = mid - 1;
             else {
-                if (mid==n-1 || value!=arrays[mid+1])
+                if (mid == n - 1 || value != arrays[mid + 1])
                     return mid;
                 else
                     low = mid + 1;
@@ -75,7 +75,7 @@ public class day02 {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         int[] arrays = {1, 2, 4, 6, 9, 12, 23, 23, 25, 30};
         System.out.println(method2(arrays, 10, 23));
     }
@@ -83,18 +83,18 @@ public class day02 {
     /***
      * 查找第一个大于等于给定值的元素
      */
-    public int method3(int[] arrays, int n, int value){
+    public int method3(int[] arrays, int n, int value) {
         int low = 0;
         int high = n - 1;
         int mid;
 
-        while (low <= high){
+        while (low <= high) {
             mid = low + ((high - low) >> 1);
 
             if (value > arrays[mid])
                 low = mid + 1;
             else {
-                if (mid==0 || value>arrays[mid-1])
+                if (mid == 0 || value > arrays[mid - 1])
                     return mid;
                 else
                     high = mid - 1;
@@ -105,7 +105,7 @@ public class day02 {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         int[] arrays = {1, 2, 4, 6, 9, 12, 23, 23, 25, 30};
         System.out.println(method3(arrays, 10, 10));
     }
@@ -113,18 +113,18 @@ public class day02 {
     /***
      * 查找第一个小于等于给定值的元素
      */
-    public int method4(int[] arrays, int n, int value){
+    public int method4(int[] arrays, int n, int value) {
         int low = 0;
         int high = n - 1;
         int mid;
 
-        while (low <= high){
+        while (low <= high) {
             mid = low + ((high - low) >> 1);
 
             if (value < arrays[mid])
                 high = mid - 1;
             else {
-                if (mid==n-1 || value<arrays[mid+1])
+                if (mid == n - 1 || value < arrays[mid + 1])
                     return mid;
                 else
                     low = mid + 1;
@@ -135,7 +135,7 @@ public class day02 {
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         int[] arrays = {1, 2, 4, 6, 9, 12, 23, 23, 25, 30};
         System.out.println(method4(arrays, 10, 10));
     }
