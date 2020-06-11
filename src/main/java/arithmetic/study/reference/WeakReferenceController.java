@@ -21,7 +21,7 @@ public class WeakReferenceController {
 
     @RequestMapping("start")
     public void start() {
-        ReferenceQueue<WeakReferenceEntity> referenceQueue = WeakReferenceQueue.getInstance();
+        ReferenceQueue referenceQueue = WeakReferenceQueue.getInstance();
         WeakReferenceEntity entity;
         for (int i = 0; i < 1000; ++i) {
             entity = new WeakReferenceEntity();

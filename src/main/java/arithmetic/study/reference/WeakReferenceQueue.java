@@ -1,5 +1,6 @@
 package arithmetic.study.reference;
 
+import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 
 /**
@@ -9,7 +10,7 @@ import java.lang.ref.ReferenceQueue;
 
 public class WeakReferenceQueue {
 
-    private static volatile ReferenceQueue<WeakReferenceEntity> referenceQueue;
+    private static volatile ReferenceQueue referenceQueue;
 
     private WeakReferenceQueue(){
 
@@ -19,7 +20,7 @@ public class WeakReferenceQueue {
         if (referenceQueue == null){
             synchronized (WeakReferenceQueue.class){
                 if (referenceQueue == null){
-                    referenceQueue = new ReferenceQueue<>();
+                    referenceQueue = new ReferenceQueue();
                 }
             }
         }

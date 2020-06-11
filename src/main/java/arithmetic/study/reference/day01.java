@@ -126,4 +126,9 @@ public class day01 {
      * 使用ReferenceQueue进行数据监控
      * 参考WeakReference*
      */
+
+    /***
+     * 使用ReferenceQueue模仿WeakHashMap
+     * WeakHashMap是对key做弱引用处理，我们这里对value做弱引用处理，参考WeakHashMap*
+     */
 }
