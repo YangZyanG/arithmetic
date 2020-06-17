@@ -1,5 +1,6 @@
 package arithmetic.study.list;
 
+import lombok.Data;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -44,7 +45,7 @@ public class day01 {
      *
      */
     @Test
-    public void method1(){
+    public void method1() {
         SinglyLinkedList linkedList = new SinglyLinkedList();
         linkedList.addNode(1);
         linkedList.addNode(2);
@@ -63,7 +64,7 @@ public class day01 {
      * 循环链表的优点是从尾结点到头结点比较方便，当处理的数据具有环形结构特点时，就特别适合采用循环链表，比如约瑟夫问题。
      */
     @Test
-    public void method2(){
+    public void method2() {
         CycleLinkedList cycleLinkedList = new CycleLinkedList();
         cycleLinkedList.init(10000);
         cycleLinkedList.print();
@@ -80,7 +81,7 @@ public class day01 {
      *
      */
     @Test
-    public void method3(){
+    public void method3() {
         MyLinkedList<String> linkedList = new MyLinkedList<String>();
         linkedList.add("1");
         linkedList.add("2");
@@ -100,4 +101,176 @@ public class day01 {
      * 如果数据不在链表中，又分为两种情况。
      * 如果缓存链表未满，直接插入头部。如果缓存链表满了，删除最后一个结点的数据，再将新数据插入头部。
      */
+
+    @Data
+    class FIFO {
+
+        private Node head;
+        private int count;
+        private int size;
+
+        public FIFO(int size) {
+            this.count = 0;
+            this.size = size;
+        }
+
+        public void push(int data) {
+            if (head == null) {
+                head = new Node(data);
+                ++count;
+                return;
+            }
+
+            if (count == size) {
+                head = head.next;
+            } else {
+                ++count;
+            }
+
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            Node newNode = new Node(data);
+            temp.next = newNode;
+        }
+
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder();
+            Node temp = head;
+            while (temp != null) {
+                stringBuilder.append(temp.data + ", ");
+                temp = temp.next;
+            }
+            return stringBuilder.toString();
+        }
+
+        @Data
+        class Node {
+
+            public Node(int data) {
+                this.data = data;
+            }
+
+            private int data;
+            private Node next;
+        }
+    }
+
+    @Test
+    public void FIFO_test() {
+        FIFO fifo = new FIFO(10);
+        for (int i = 0; i < 20; ++i) {
+            fifo.push(i);
+        }
+        System.out.println(fifo.toString());
+    }
+
+    @Data
+    class LFU {
+
+        private Node head;
+        private int count;
+        private int size;
+
+        public LFU(int size) {
+            this.count = 0;
+            this.size = size;
+        }
+
+        public void push(int data) {
+            if (head == null) {
+                head = new Node(data);
+                ++count;
+                return;
+            }
+
+            Node temp = head;
+            while (temp != null){
+                if (temp.data == data){
+                    temp.count();
+                    sort();
+                    return;
+                }
+                temp = temp.next;
+            }
+
+            Node newNode = new Node(data);
+            if (count == size) {
+                newNode.next = head.next;
+                head = newNode;
+            } else {
+                ++count;
+                temp = head;
+                while (temp.next != null){
+                    temp = temp.next;
+                }
+                temp.next = newNode;
+            }
+        }
+
+        public String toString(){
+            StringBuilder stringBuilder = new StringBuilder();
+            Node temp = head;
+            while (temp != null) {
+                stringBuilder.append(temp.data + ":" + temp.frq + ", ");
+                temp = temp.next;
+            }
+            return stringBuilder.toString();
+        }
+
+        private void sort(){
+           synchronized (head){
+               Node temp = head;
+               while (temp.next != null){
+                   if (temp.frq > temp.next.frq){
+                       int sm_date = temp.next.data;
+                       int sm_frq = temp.next.frq;
+                       temp.next.data = temp.data;
+                       temp.next.frq = temp.frq;
+                       temp.data = sm_date;
+                       temp.frq = sm_frq;
+                   }
+                   temp = temp.next;
+               }
+           }
+        }
+
+        @Data
+        class Node {
+
+            public Node(int data) {
+                this.data = data;
+            }
+
+            public void count() {
+                this.frq++;
+            }
+
+            private int data;
+            private int frq = 1;  //频率
+            private Node next;
+        }
+    }
+
+    @Test
+    public void LFU_test(){
+        LFU lfu = new LFU(10);
+        for (int i=0; i<10; ++i){
+            lfu.push(i);
+            lfu.push(i);
+        }
+        System.out.println(lfu.toString());
+
+        lfu.push(0);
+        System.out.println(lfu.toString());
+
+        lfu.push(10);
+        System.out.println(lfu.toString());
+    }
+
+    @Data
+    class LRU{
+
+    }
 }
