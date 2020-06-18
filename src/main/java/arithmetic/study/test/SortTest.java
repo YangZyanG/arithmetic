@@ -1,4 +1,4 @@
-package arithmetic.study;
+package arithmetic.study.test;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;

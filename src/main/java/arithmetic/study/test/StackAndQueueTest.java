@@ -1,4 +1,4 @@
-package arithmetic.study;
+package arithmetic.study.test;
 
 import com.yohitrip.common.base.util.json.JSONConvert;
 import lombok.Data;
