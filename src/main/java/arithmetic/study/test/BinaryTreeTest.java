@@ -20,6 +20,8 @@ public class BinaryTreeTest {
      * 深度+1
      * 4.树的高度
      * 根节点的高度
+     * 5.树的深度
+     * 根节点到叶子节点最长路径的层数
      */
 
     @Data
@@ -71,12 +73,67 @@ public class BinaryTreeTest {
             }
         }
 
-        public void delete(T element){
-            if (root == null){
-                return;
+        public void delete(T element) {
+            //
+        }
+
+        public Node<T> searchMax() {
+            if (root == null) {
+                return null;
             }
 
+            Node<T> currentNode = root;
+            while (currentNode.r != null) {
+                currentNode = currentNode.r;
+            }
+            return currentNode;
+        }
 
+        public Node<T> searchMin() {
+            if (root == null) {
+                return null;
+            }
+
+            Node<T> currentNode = root;
+            while (currentNode.l != null) {
+                currentNode = currentNode.l;
+            }
+            return currentNode;
+        }
+
+        public Node<T> searchPre(T element) {
+            if (root == null) {
+                return null;
+            }
+
+            Node<T> currentNode = root;
+            Node<T> preNode = null;
+            while (currentNode != null) {
+                if (element.compareTo(currentNode.element) > 0) {
+                    preNode = currentNode;
+                    currentNode = currentNode.r;
+                } else if (element.compareTo(currentNode.element) < 0) {
+                    preNode = currentNode;
+                    currentNode = currentNode.l;
+                } else {
+                    if (currentNode == root) {
+                        return null;
+                    }
+                    return preNode;
+                }
+            }
+            return null;
+        }
+
+        public int maxDepth(){
+            return maxDepth(root);
+        }
+
+        private int maxDepth(Node<T> currentNode) {
+            if (currentNode == null){
+                return 0;
+            }
+            return Math.max(maxDepth(currentNode.l), maxDepth(currentNode.r)) + 1;
         }
 
         /***
@@ -89,7 +146,7 @@ public class BinaryTreeTest {
          * 3.后序
          * 左子树 -> 右子树 -> 自己
          */
-        public <T> void preOrder(Node<T> node){
+        public <T> void preOrder(Node<T> node) {
             System.out.println(node.element);
             if (node.l != null)
                 preOrder(node.l);
@@ -97,7 +154,7 @@ public class BinaryTreeTest {
                 preOrder(node.r);
         }
 
-        public <T> void inOrder(Node<T> node){
+        public <T> void inOrder(Node<T> node) {
             if (node.l != null)
                 inOrder(node.l);
             System.out.println(node.element);
@@ -105,7 +162,7 @@ public class BinaryTreeTest {
                 inOrder(node.r);
         }
 
-        public <T> void postOrder(Node<T> node){
+        public <T> void postOrder(Node<T> node) {
             if (node.l != null)
                 postOrder(node.l);
             if (node.r != null)
@@ -148,5 +205,11 @@ public class BinaryTreeTest {
         tree.inOrder(tree.root);
         System.out.println("postOrder:");
         tree.postOrder(tree.root);
+
+        System.out.println("max:" + tree.searchMax().element);
+        System.out.println("min:" + tree.searchMin().element);
+        System.out.println(tree.searchPre(14).element);
+
+        System.out.println("depth:" + tree.maxDepth());
     }
 }
